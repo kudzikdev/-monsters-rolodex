@@ -4,7 +4,8 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    monsters: []
+    monsters: [],
+    searchInput: ""
   };
 
   componentDidMount() {
@@ -17,9 +18,19 @@ class App extends React.Component {
       );
   }
 
+  handleInputSearch = e => {
+    this.setState({ searchInput: e.target.value });
+  };
+
   render() {
     return (
       <div className="App">
+        <input
+          type="text"
+          placeholder="search monster"
+          onChange={this.handleInputSearch}
+          value={this.state.searchInput}
+        />
         <CardList monsters={this.state.monsters}></CardList>
       </div>
     );
